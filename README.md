@@ -4,14 +4,14 @@
 [![rank](https://make.fun/badge/token-radar-01/funtoons/token-radar-v6/rank.svg)](https://make.fun/c/token-radar-01)
 [![reward](https://make.fun/badge/token-radar-01/funtoons/token-radar-v6/reward.svg)](https://make.fun/c/token-radar-01)
 
-Which pre-token protocol is worth farming next — ranked by **expected value**, not by size alone.
+Which pre-token protocol is worth farming next — ranked by **expected value**, not by size alone. The dashboard's default sort is a 50/50 rank blend of implied value and token odds (the board file stays ranked by expected value, because the gate needs its dollar column to fall with rank).
 
 ## The one idea
 
 Version 3 ranked by implied value alone. This version ranks by **expected value = implied value × √(P)**, where P is the fitted share of peer protocols that already record a token. The square root bounds the multiplier: a young protocol with P = 25% keeps 50% of its implied value, not 25%.
 
 - **Implied value**: log market cap fitted by least squares on launch-eligible peers that already have a token (LOO median error ~3.1x, walk-forward ~2.2x).
-- **Token odds**: logistic regression on all 758 snapshot protocols (5-fold CV AUC ~0.72, age coefficient +0.58 logit/year). P(token) is the share of peers that *already* have a token — not a forecast that a protocol will launch one. It rises with age and plateaus near 80%.
+- **Token odds**: logistic regression on all 758 snapshot protocols (5-fold CV AUC ~0.72; age enters as a hinge, min(age, 4 years), slope +0.62 logit/year below the knot and flat after — the fitted share rises with age, then plateaus). P(token) is the share of peers that *already* have a token — not a forecast that a protocol will launch one. A temporal check (fit before 2025-01-06, tested after) gives AUC 0.61, below the random-fold CV: part of the age signal is a cohort effect, which is why the blend never lets odds rank alone.
 - **Coverage**: all 758 protocols are accounted for — launch candidates ranked, protocols that already have a token shown separately, and pre-token products that are not launch candidates tracked but not ranked as targets.
 - **Farm verdicts**: every row carries FARM / THIN / SKIP with $/hour, expected share, break-even and minimum capital, from stated assumptions (5% pool, farmer count from TVL, gas on the cheapest chain).
 
