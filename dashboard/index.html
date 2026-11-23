@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar v6 — which pre-token protocol to farm next</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>TOKEN RADAR <span class="v6">v6</span></h1>
+    <p class="sub">Which pre-token protocol to farm next — default sort: 50/50 blend of value and token odds.</p>
+  </div>
+  <div class="asof" id="asof"></div>
+</header>
+
+<section class="stats" id="stats"></section>
+
+<nav class="tabs" id="tabs">
+  <button data-view="radar" class="active">Radar — launch candidates</button>
+  <button data-view="all">All 758 protocols</button>
+  <button data-view="live">Already has a token</button>
+  <button data-view="model">Model &amp; honesty note</button>
+</nav>
+
+<section class="controls" id="controls">
+  <input id="q" type="search" placeholder="Search name or slug…" autocomplete="off">
+  <select id="cat"><option value="">All categories</option></select>
+  <select id="verdict">
+    <option value="">All verdicts</option>
+    <option value="F">FARM</option>
+    <option value="T">THIN</option>
+    <option value="S">SKIP</option>
+    <option value="L">LIVE</option>
+    <option value="K">TRACKED</option>
+  </select>
+  <span class="count" id="count"></span>
+</section>
+
+<main id="main">
+  <div class="tablewrap"><table id="board">
+    <thead><tr id="headrow"></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+  <section class="detail" id="detail" hidden></section>
+  <section class="model" id="model" hidden></section>
+</main>
+
+<footer>
+  <p>Snapshot: DefiLlama protocols ≥ $5M TVL, frozen 2026-11-14. “No token” is DefiLlama's record, not proof. Implied values are this radar's estimates. Verdicts assume a 5% pool split across estimated farmers; see Model for all assumptions. Not financial advice.</p>
+</footer>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
